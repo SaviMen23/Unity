@@ -1,17 +1,40 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Counter : MonoBehaviour
 {
-    public static event Action CounterChanged;
+    [SerializeField] private float _delay = 0.5f;
 
-    private void Update()
+    public static event Action<int> CounterChanged;
+    private bool _canWork = false;
+    private int _counter = 0;
+
+    private void OnEnable()
     {
-        if (Input.GetMouseButtonDown(0))
+        ClickProcessing.UserClicedOnMouse += StartCount;
+    }
+
+    private void OnDisable()
+    {
+        ClickProcessing.UserClicedOnMouse -= StartCount;
+    }
+
+    public void StartCount()
+    {
+        _canWork = _canWork == false;
+
+        if (_canWork)
+            StartCoroutine(UseTimer());
+    }
+
+    private IEnumerator UseTimer()
+    {
+        while (_canWork)
         {
-            CounterChanged?.Invoke();
+            _counter++;
+            CounterChanged?.Invoke(_counter);
+            yield return new WaitForSecondsRealtime(_delay);
         }
     }
 }

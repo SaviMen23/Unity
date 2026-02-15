@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 1872845935}
   - component: {fileID: 1872845934}
   - component: {fileID: 1872845933}
+  - component: {fileID: 1872845936}
   m_Layer: 0
   m_Name: TimerToConsole
   m_TagString: Untagged
@@ -331,7 +332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96506a74b118ad488138c8ac7918b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delay: 0.5
 --- !u!114 &1872845934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56f2f064e6e943448e1d5c964b1cb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _delay: 0.5
 --- !u!4 &1872845935
 Transform:
   m_ObjectHideFlags: 0
@@ -359,3 +360,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1872845936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872845932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9012f16bb4a30e4e998b2a6e32474f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
