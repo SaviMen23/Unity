@@ -5,19 +5,20 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
     [SerializeField] private float _delay = 0.5f;
+    [SerializeField] private ClickProcessing _clickProcessing;
 
-    public static event Action<int> CounterChanged;
+    public event Action<int> CounterChanged;
     private bool _canWork = false;
     private int _counter = 0;
 
     private void OnEnable()
     {
-        ClickProcessing.UserClicedOnMouse += StartCount;
+        _clickProcessing.UserClickedOnMouse += StartCount;
     }
 
     private void OnDisable()
     {
-        ClickProcessing.UserClicedOnMouse -= StartCount;
+        _clickProcessing.UserClickedOnMouse -= StartCount;
     }
 
     public void StartCount()

@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96506a74b118ad488138c8ac7918b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _counter: {fileID: 1872845934}
 --- !u!114 &1872845934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delay: 0.5
+  _clickProcessing: {fileID: 1872845936}
 --- !u!4 &1872845935
 Transform:
   m_ObjectHideFlags: 0

@@ -6,14 +6,16 @@ using UnityEngine;
 
 public class CounterView : MonoBehaviour
 {
+    [SerializeField] private Counter _counter;
+
     private void OnEnable()
     {
-        Counter.CounterChanged += Show;
+        _counter.CounterChanged += Show;
     }
 
     private void OnDisable()
     {
-        Counter.CounterChanged -= Show;
+        _counter.CounterChanged -= Show;
     }
 
     private void Show(int counter)
