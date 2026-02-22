@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnHandler : MonoBehaviour
@@ -19,13 +17,18 @@ public class SpawnHandler : MonoBehaviour
     {
         _spawner.DestroyCube(cube);
         int randomAmountCubes = _spawner.NumberOfCubes;
+        bool isDivided = false;
 
         for (int i = 0; i < randomAmountCubes; i++)
         {
             if (cube.ChanceOfSeparation >= Random.Range(0f, 1f))
+            {
+                isDivided = true;
                 _spawner.SpawnCubeAfterExplode(cube).CubeDestroy += DestroyCube;
+            }
         }
 
-        _exploder.Explode(cube.transform.position);
+        if (isDivided == false)
+            _exploder.Explode(cube);
     }
 }

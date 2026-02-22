@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 10
-  _force: 100
+  _force: 500
 --- !u!114 &715576832
 MonoBehaviour:
   m_ObjectHideFlags: 0

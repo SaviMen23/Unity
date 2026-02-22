@@ -7,10 +7,12 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private float _force;
 
-    public void Explode(Vector3 position)
+    public void Explode(Cube cube)
     {
+        float factor = 1f/ cube.ChanceOfSeparation;
+
         foreach (Rigidbody explodableCube in GetExplodableCubes())
-            explodableCube.AddExplosionForce(_force,position,_radius);
+            explodableCube.AddExplosionForce(_force * factor, cube.transform.position, _radius * factor);
     }
 
     private List<Rigidbody> GetExplodableCubes()
