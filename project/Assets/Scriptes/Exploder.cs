@@ -7,7 +7,7 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private float _force;
 
-    public void Explode(Cube cube)
+    public void Explode(Block cube)
     {
         float factor = 1f/ cube.ChanceOfSeparation;
 
@@ -26,4 +26,4 @@ public class Exploder : MonoBehaviour
 
         return cubes;
     }
-}
+}   

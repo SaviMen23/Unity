@@ -13,7 +13,7 @@ public class SpawnHandler : MonoBehaviour
             _spawner.SpawnStartedCube().CubeDestroy += DestroyCube;
     }
 
-    private void DestroyCube(Cube cube)
+    private void DestroyCube(Block cube)
     {
         _spawner.DestroyCube(cube);
         int randomAmountCubes = _spawner.NumberOfCubes;

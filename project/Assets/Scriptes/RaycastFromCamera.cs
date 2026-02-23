@@ -25,7 +25,7 @@ public class RaycastFromCamera : MonoBehaviour
         _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(_ray, out _hit, Mathf.Infinity))
-            if (_hit.collider.TryGetComponent(out Cube cube))
+            if (_hit.collider.TryGetComponent(out Block cube))
                 cube.Destroy();
     }
 

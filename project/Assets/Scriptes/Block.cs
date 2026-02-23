@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Cube : MonoBehaviour
+public class Block : MonoBehaviour
 {
-    public event Action<Cube> CubeDestroy;
+    public event Action<Block> CubeDestroy;
 
     public float ChanceOfSeparation { get; private set; } = 1f;
 

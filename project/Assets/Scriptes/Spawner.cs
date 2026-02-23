@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Cube _prefab;
-    [SerializeField] private Exploder _exploder;
+    [SerializeField] private Block _prefab;
     [SerializeField] private Vector3 _scale = new Vector3(1f, 1f, 1f);
     [SerializeField, Min(1)] private int _min = 2;
     [SerializeField, Min(1)] private int _max = 6;
@@ -27,7 +26,7 @@ public class Spawner : MonoBehaviour
         _collider = GetComponent<Collider>();
     }
 
-    public Cube SpawnStartedCube()
+    public Block SpawnStartedCube()
     {
         int divider = 2;
         float maxOffsetX = _collider.bounds.size.x / divider;
@@ -40,9 +39,9 @@ public class Spawner : MonoBehaviour
         return SpawnCube(position, _prefab.transform.localScale, chanceOfSeparation);
     }
 
-    private Cube SpawnCube(Vector3 position, Vector3 scale, float chanceOfSeparation)
+    private Block SpawnCube(Vector3 position, Vector3 scale, float chanceOfSeparation)
     {
-        Cube cube = Instantiate(_prefab, position, Quaternion.identity);
+        Block cube = Instantiate(_prefab, position, Quaternion.identity);
         cube.transform.localScale = scale;
         cube.SetChance(chanceOfSeparation);
 
@@ -52,17 +51,17 @@ public class Spawner : MonoBehaviour
         return cube;
     }
 
-    public void DestroyCube(Cube cube)
+    public void DestroyCube(Block cube)
     {
         Destroy(cube.gameObject);
     }
 
-    public Cube SpawnCubeAfterExplode(Cube parentCube)
+    public Block SpawnCubeAfterExplode(Block parentCube)
     {
         int multiplierForChance = 2;
         int multiplierForScale = 2;
         Vector3 position = parentCube.transform.position;
-        Cube cube = SpawnCube(position, parentCube.transform.localScale / multiplierForScale, parentCube.ChanceOfSeparation / multiplierForChance);
+        Block cube = SpawnCube(position, parentCube.transform.localScale / multiplierForScale, parentCube.ChanceOfSeparation / multiplierForChance);
 
         return cube;
     }
