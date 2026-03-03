@@ -5,13 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private PoolTargets _poolTargets;
     [SerializeField] private int _startQuality;
+    [SerializeField] private Target _prefab;
+    [SerializeField] private int _poolCapacity = 5;
 
+    private PoolTargets _poolTargets;
     private Collider _collider;
 
     private void Awake()
     {
+        _poolTargets = new PoolTargets(_prefab, _poolCapacity);
         _collider = GetComponent<Collider>();
     }
 
@@ -27,7 +30,7 @@ public class Spawner : MonoBehaviour
         float colliderBoundsY = _collider.bounds.size.y / 2;
         float colliderBoundsZ = _collider.bounds.size.z / 2;
 
-        Vector3 position = new Vector3(Random.Range(-colliderBoundsX,colliderBoundsX + 1), Random.Range(-colliderBoundsY,
+        Vector3 position = new Vector3(Random.Range(-colliderBoundsX, colliderBoundsX + 1), Random.Range(-colliderBoundsY,
         colliderBoundsY + 1), Random.Range(-colliderBoundsZ, colliderBoundsZ + 1)) + transform.position;
         Target target = _poolTargets.Get();
         target.TargetPooled += RespawnTarget;

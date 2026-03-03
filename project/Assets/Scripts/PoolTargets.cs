@@ -1,17 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolTargets : MonoBehaviour
+public class PoolTargets
 {
-    [SerializeField] private Target _prefab;
-    [SerializeField] private int _poolCapacity;
-
+    private Target _prefab;
     private Queue<Target> _targets;
     private Color _prefabColor;
+    private int _poolCapacity;
+
+    public PoolTargets(Target prefab, int capacity) 
+    {
+        _prefab = prefab;
+        _poolCapacity = capacity;
+        Initialize();
+        Fill();
+    }
 
     public Target Get()
     {
-        if(_targets.Count == 0)
+        if (_targets.Count == 0)
             ExpandPool();
 
         Target target = _targets.Dequeue();
@@ -27,16 +34,16 @@ public class PoolTargets : MonoBehaviour
         _targets.Enqueue(target);
     }
 
-    private void Awake()
+    private void Initialize()
     {
         _targets = new Queue<Target>();
         _prefabColor = _prefab.GetComponent<Renderer>().sharedMaterial.color;
     }
 
-    private void Start()
+    private void Fill()
     {
         for (int i = 0; i < _poolCapacity; i++)
-            _targets.Enqueue(Instantiate(_prefab));
+            _targets.Enqueue(GameObject.Instantiate(_prefab));
 
         foreach (Target target in _targets)
             target.gameObject.SetActive(false);
@@ -44,7 +51,7 @@ public class PoolTargets : MonoBehaviour
 
     private void ExpandPool()
     {
-        Target target = Instantiate(_prefab);
+        Target target = GameObject.Instantiate(_prefab);
         target.gameObject.SetActive(false);
         _targets.Enqueue(target);
     }

@@ -7,9 +7,18 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public event Action<Target> TargetPooled;
-    public bool IsRepainted { get { return _isRapainted; } }
 
     private bool _isRapainted = false;
+    private Renderer _prefabRenderer;
+    private Rigidbody _rigidbody;
+
+    public bool IsRepainted { get { return _isRapainted; } }
+
+    private void Awake()
+    {
+        _prefabRenderer =  this.GetComponent<Renderer>();
+        _rigidbody = this.GetComponent<Rigidbody>();
+    }
 
     public void Remove()
     {
@@ -19,7 +28,9 @@ public class Target : MonoBehaviour
     public void Clear(Color prefabColor)
     {
         _isRapainted = false;
-        this.GetComponent<Renderer>().material.color = prefabColor;
+        _prefabRenderer.material.color = prefabColor;
+        _rigidbody.velocity = Vector3.zero;
+        this.transform.rotation = Quaternion.identity;
     }
 
     public void BeRepainted()
