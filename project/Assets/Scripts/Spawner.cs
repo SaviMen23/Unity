@@ -1,45 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private int _startQuality;
-    [SerializeField] private Target _prefab;
-    [SerializeField] private int _poolCapacity = 5;
+    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField, Min(0)] private float _delay;
+    [SerializeField] private Vector3 _direction;
+    [Space(20)]
+    [SerializeField] private Transform[] _spawnPoints;
 
-    private PoolTargets _poolTargets;
-    private Collider _collider;
+    private WaitForSecondsRealtime _delayForCoroutine;
+    private int _minForArrays = 0;
 
     private void Awake()
     {
-        _poolTargets = new PoolTargets(_prefab, _poolCapacity);
-        _collider = GetComponent<Collider>();
+        _delayForCoroutine = new WaitForSecondsRealtime(_delay);
     }
 
     private void Start()
     {
-        for (int i = 0; i < _startQuality; i++)
-            Spawn();
+        StartCoroutine(nameof(SpawnWithDelay));
     }
 
-    private void Spawn()
+    private IEnumerator SpawnWithDelay()
     {
-        float colliderBoundsX = _collider.bounds.size.x / 2;
-        float colliderBoundsY = _collider.bounds.size.y / 2;
-        float colliderBoundsZ = _collider.bounds.size.z / 2;
+        while (true)
+        {
+            yield return _delayForCoroutine;
 
-        Vector3 position = new Vector3(Random.Range(-colliderBoundsX, colliderBoundsX + 1), Random.Range(-colliderBoundsY,
-        colliderBoundsY + 1), Random.Range(-colliderBoundsZ, colliderBoundsZ + 1)) + transform.position;
-        Target target = _poolTargets.Get();
-        target.TargetPooled += RespawnTarget;
-        target.transform.position = position;
-    }
-
-    private void RespawnTarget(Target target)
-    {
-        _poolTargets.Return(target);
-        Spawn();
+            Enemy enemy = Instantiate(_enemyPrefab, _spawnPoints[Random.Range(_minForArrays, _spawnPoints.Length)]);
+            enemy.StartWalk(_direction.normalized);
+        }
     }
 }
