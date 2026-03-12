@@ -1,23 +1,19 @@
-using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    private Vector3 _direction;
-    private bool _canWalk = false;
+    private Transform _target;
 
     private void Update()
     {
-        if (_canWalk)
-            transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        transform.LookAt(_target);
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
     }
 
-    public void StartWalk(Vector3 direction)
+    public void SetTarget(Transform target)
     {
-        _direction = direction;
-        transform.rotation = Quaternion.LookRotation(_direction);
-        _canWalk = true;
+        _target = target;
     }
 }

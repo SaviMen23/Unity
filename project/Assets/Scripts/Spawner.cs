@@ -1,13 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Enemy _enemyPrefab;
     [SerializeField, Min(0)] private float _delay;
-    [SerializeField] private Vector3 _direction;
     [Space(20)]
-    [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] private bool _autoFillSpawnPoints = false;
+    [SerializeField] private List<SpawnPoint> _spawnPoints;
 
     private WaitForSecondsRealtime _delayForCoroutine;
     private int _minForArrays = 0;
@@ -15,11 +15,22 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         _delayForCoroutine = new WaitForSecondsRealtime(_delay);
+
+        if (_autoFillSpawnPoints)
+            FillSpawnPoints();
     }
 
     private void Start()
     {
         StartCoroutine(nameof(SpawnWithDelay));
+    }
+
+    private void FillSpawnPoints()
+    {
+        foreach (Transform spawnPoint in transform)
+        {
+            _spawnPoints.Add(spawnPoint?.GetComponent<SpawnPoint>());
+        }
     }
 
     private IEnumerator SpawnWithDelay()
@@ -28,8 +39,7 @@ public class Spawner : MonoBehaviour
         {
             yield return _delayForCoroutine;
 
-            Enemy enemy = Instantiate(_enemyPrefab, _spawnPoints[Random.Range(_minForArrays, _spawnPoints.Length)]);
-            enemy.StartWalk(_direction.normalized);
+            _spawnPoints[Random.Range(_minForArrays, _spawnPoints.Count)].Spawn();
         }
     }
 }
