@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-public class GoPlaces : MonoBehaviour
+public class Follower : MonoBehaviour
 {
     [SerializeField] private Transform _parentPoint;
     [SerializeField] private float _speed;
@@ -15,7 +14,7 @@ public class GoPlaces : MonoBehaviour
         _places = new Transform[_parentPoint.childCount];
 
         for (int i = 0; i < _parentPoint.childCount; i++)
-            _places[i] = _parentPoint.GetChild(i).GetComponent<Transform>();
+            _places[i] = _parentPoint.GetChild(i);
     }
 
     private void Update()
