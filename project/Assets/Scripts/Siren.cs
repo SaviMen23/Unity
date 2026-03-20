@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Siren : MonoBehaviour
 {
+    [SerializeField] private TriggerZone _triggerZone;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private float _delta;
 
@@ -14,19 +16,31 @@ public class Siren : MonoBehaviour
         _audioSource.Play();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnEnable()
     {
-        if (other.GetComponent<Movement>() != null)
-        {
-            _canWork = true;
-            _targetVolume = 1f;
-        }
+        _triggerZone.TriggerWorked += Toggle;
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnDisable()
     {
-        if (other.GetComponent<Movement>() != null)
-            _targetVolume = 0f;
+        _triggerZone.TriggerWorked -= Toggle;
+    }
+
+    private void Toggle(bool isTurnOn, Collider other)
+    {
+        if (isTurnOn)
+        {
+            if (other.GetComponent<Movement>() != null)
+            {
+                _canWork = true;
+                _targetVolume = 1f;
+            }
+        }
+        else
+        {
+            if (other.GetComponent<Movement>() != null)
+                _targetVolume = 0f;
+        }
     }
 
     private void Update()
