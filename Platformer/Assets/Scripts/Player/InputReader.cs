@@ -9,7 +9,7 @@ public class InputReader : MonoBehaviour
     public event Action KeyJumpPressed;
 
     private string _horizontal = "Horizontal";
-    private bool axisNotZero = true;
+    private bool _canSand = true;
 
     private void Update()
     {
@@ -19,10 +19,15 @@ public class InputReader : MonoBehaviour
 
     private void CheckMove()
     {
-        float direction = Input.GetAxis(_horizontal);
+        float direction = Input.GetAxisRaw(_horizontal);
 
         if (direction != 0)
             AxisGot?.Invoke(direction);
+
+        if (_canSand && direction == 0)
+            AxisGot?.Invoke(direction);
+
+        _canSand = direction != 0;
     }
 
     private void CheckJump()

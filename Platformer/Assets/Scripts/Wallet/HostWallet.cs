@@ -17,9 +17,4 @@ public class HostWallet : MonoBehaviour
         if (targetCollider.TryGetComponent(out Coin coin))
             coin.Take();
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(transform.position + _offsetCollection, _collectionRadius);
-    }
 }

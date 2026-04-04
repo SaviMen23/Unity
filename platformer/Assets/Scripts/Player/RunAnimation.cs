@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -9,8 +8,7 @@ public class RunAnimation : MonoBehaviour
     [SerializeField] private string _variableRun;
 
     private int _hashRun;
-    private bool _canSwitch;
-    private float _pastDirection;
+    private int currentDirection = 1;
 
     private void Awake()
     {
@@ -29,12 +27,13 @@ public class RunAnimation : MonoBehaviour
 
     private void SetAnimation(float direction)
     {
-        if (direction > 0)
+        if (direction != 0 && currentDirection != direction)
         {
             Vector3 newScale = transform.localScale;
             newScale.x *= -1;
             transform.localScale = newScale;
-        }       
+            currentDirection = (int)direction;
+        }
 
         _animator.SetBool(_hashRun, direction != 0);
     }
