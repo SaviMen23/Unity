@@ -19,11 +19,13 @@ public class Trail : MonoBehaviour
         _follower.TargetSet -= SetFollowerTarget;
     }
 
-    private Transform SetFollowerTarget(Transform currentTarget)
+    private void SetFollowerTarget()
     {
-        if(currentTarget == null) 
-            return _firstPoint;
-
-        return currentTarget == _secondPoint ? _firstPoint : _secondPoint;
+        if (_follower.transform.position == _firstPoint.position)
+            _follower.SetTarget(_secondPoint);
+        else if (_follower.transform.position == _secondPoint.position)
+            _follower.SetTarget(_firstPoint);
+        else
+            _follower.SetTarget(_firstPoint);
     }
 }

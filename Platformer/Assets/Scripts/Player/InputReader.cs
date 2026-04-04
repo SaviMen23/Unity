@@ -13,11 +13,11 @@ public class InputReader : MonoBehaviour
 
     private void Update()
     {
-        CheckMove();
-        CheckJump();
+        ReadMove();
+        ReadJump();
     }
 
-    private void CheckMove()
+    private void ReadMove()
     {
         float direction = Input.GetAxisRaw(_horizontal);
 
@@ -30,7 +30,7 @@ public class InputReader : MonoBehaviour
         _canSand = direction != 0;
     }
 
-    private void CheckJump()
+    private void ReadJump()
     {
         if(Input.GetKeyDown(_JumpKey))
             KeyJumpPressed?.Invoke();

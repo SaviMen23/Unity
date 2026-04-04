@@ -15,6 +15,6 @@ public class HostWallet : MonoBehaviour
             return;
         
         if (targetCollider.TryGetComponent(out Coin coin))
-            coin.Take();
+            coin.Give();
     }
 }

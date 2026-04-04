@@ -7,13 +7,13 @@ public class Follower : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    public event Func<Transform,Transform> TargetSet;
+    public event Action TargetSet;
 
     private Transform _target;
 
     private void Start()
     {
-       _target = TargetSet?.Invoke(null);
+        TargetSet?.Invoke();
     }
 
     private void Update()
@@ -21,13 +21,13 @@ public class Follower : MonoBehaviour
         Move();
     }
 
+    public void SetTarget(Transform target) => _target = target;
+
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
 
         if (transform.position == _target.position)
-           _target = TargetSet?.Invoke(_target);
+            TargetSet?.Invoke();
     }
-
-    private void SetTarget(Transform target) => _target = target;
 }

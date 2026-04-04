@@ -30,15 +30,15 @@ public class Jump : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputHandler.KeyJumpPressed += TryJump;
+        _inputHandler.KeyJumpPressed += Try;
     }
 
     private void OnDisable()
     {
-        _inputHandler.KeyJumpPressed -= TryJump;
+        _inputHandler.KeyJumpPressed -= Try;
     }
 
-    private void TryJump()
+    private void Try()
     {
         if (_isGrounded)
             _parentRigidbody?.AddForce(Vector2.up * _force);
