@@ -17,12 +17,12 @@ public class TakeCoinAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        _coin.CoinTaked += Play;
+        _coin.CoinTook += Play;
     }
 
     private void OnDisable()
     {
-        _coin.CoinTaked -= Play;
+        _coin.CoinTook -= Play;
     }
 
     private void Play()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private InputHandler _inputHandler;
+    [SerializeField] private InputReader _inputHandler;
     [SerializeField] private float _moveSpeed;
 
     private void OnEnable()

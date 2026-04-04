@@ -1,18 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class RunAnimation : MonoBehaviour
 {
-    [SerializeField] private InputHandler _inputHandler;
+    [SerializeField] private InputReader _inputHandler;
     [SerializeField] private Animator _animator;
     [SerializeField] private string _variableRun;
 
     private int _hashRun;
-    private SpriteRenderer _spriteRenderer;
+    private bool _canSwitch;
+    private float _pastDirection;
 
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _hashRun = Animator.StringToHash(_variableRun);
     }
 
@@ -28,8 +29,12 @@ public class RunAnimation : MonoBehaviour
 
     private void SetAnimation(float direction)
     {
-        if (direction != 0)
-            _spriteRenderer.flipX = direction < 0;
+        if (direction > 0)
+        {
+            Vector3 newScale = transform.localScale;
+            newScale.x *= -1;
+            transform.localScale = newScale;
+        }       
 
         _animator.SetBool(_hashRun, direction != 0);
     }

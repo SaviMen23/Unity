@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1974093575711107094}
   - component: {fileID: 1974093575711107113}
   - component: {fileID: 1974093575711107117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,6 +205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 4608064171414347291, guid: 62bced6daf63222469ba9ed0e0704798, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4608064171414347293, guid: 62bced6daf63222469ba9ed0e0704798, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -248,6 +252,10 @@ PrefabInstance:
     - target: {fileID: 4608064171414347293, guid: 62bced6daf63222469ba9ed0e0704798, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743306409426456551, guid: 62bced6daf63222469ba9ed0e0704798, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62bced6daf63222469ba9ed0e0704798, type: 3}
