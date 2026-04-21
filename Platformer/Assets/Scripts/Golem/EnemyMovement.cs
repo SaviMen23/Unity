@@ -1,0 +1,37 @@
+using UnityEngine;
+
+public class EnemyMovement: MonoBehaviour
+{
+    [SerializeField] private Detect _detect;
+    [SerializeField] private float _speed;
+
+    private Transform _target;
+    private bool canMove = false;
+        
+    private void OnEnable()
+    {
+        _detect.EnemySet += SetMoveState;
+    }
+
+    private void OnDisable()
+    {
+        _detect.EnemySet -= SetMoveState;
+    }
+
+    private void Update()
+    {
+        if (canMove)
+            Move();
+    }
+
+    private void SetMoveState(Transform target)
+    {
+        _target = target;
+        canMove = true;
+    }
+
+    private void Move()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+    }
+}
