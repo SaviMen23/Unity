@@ -11,7 +11,7 @@ public class InputReader : MonoBehaviour
     private string _horizontal = "Horizontal";
     private bool _canSand = true;
 
-    private void Update()
+    public void Renew()
     {
         ReadMove();
         ReadJump();

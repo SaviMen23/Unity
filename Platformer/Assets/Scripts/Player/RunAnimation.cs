@@ -7,11 +7,12 @@ public class RunAnimation : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private string _variableRun;
 
+    private SpriteRenderer _spriteRenderer;
     private int _hashRun;
-    private int currentDirection = 1;
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _hashRun = Animator.StringToHash(_variableRun);
     }
 
@@ -27,13 +28,8 @@ public class RunAnimation : MonoBehaviour
 
     private void SetAnimation(float direction)
     {
-        if (direction != 0 && currentDirection != direction)
-        {
-            Vector3 newScale = transform.localScale;
-            newScale.x *= -1;
-            transform.localScale = newScale;
-            currentDirection = (int)direction;
-        }
+        if (direction != 0 && _spriteRenderer != null)
+            _spriteRenderer.flipX = direction < 0;
 
         _animator.SetBool(_hashRun, direction != 0);
     }

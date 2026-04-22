@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Detect : MonoBehaviour
@@ -16,7 +17,7 @@ public class Detect : MonoBehaviour
         RadiusChanged?.Invoke(_detectRadius);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         TryDetect();
     }
