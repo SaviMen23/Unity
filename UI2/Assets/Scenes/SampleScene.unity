@@ -1901,8 +1901,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 898048092}
-        m_TargetAssemblyTypeName: GroupController, Assembly-CSharp
-        m_MethodName: ChnageVolume
+        m_TargetAssemblyTypeName: VolumeChanger, Assembly-CSharp
+        m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2442,8 +2442,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1075984275}
-        m_TargetAssemblyTypeName: GroupController, Assembly-CSharp
-        m_MethodName: ChnageVolume
+        m_TargetAssemblyTypeName: VolumeChanger, Assembly-CSharp
+        m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2885,8 +2885,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1527991536}
-        m_TargetAssemblyTypeName: GroupController, Assembly-CSharp
-        m_MethodName: ChnageVolume
+        m_TargetAssemblyTypeName: VolumeChanger, Assembly-CSharp
+        m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3477,7 +3477,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1976976731}
-        m_TargetAssemblyTypeName: GroupController, Assembly-CSharp
+        m_TargetAssemblyTypeName: volumeSwitch, Assembly-CSharp
         m_MethodName: Mute
         m_Mode: 0
         m_Arguments:
@@ -3498,7 +3498,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1976976725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783aaf6f72219384e8827475ee752aae, type: 3}
+  m_Script: {fileID: 11500000, guid: fbc7a8b6a1b1c264e8f0ef72941e15a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: a42086628b880834ca0a350337afeeca, type: 2}
