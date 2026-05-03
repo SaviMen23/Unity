@@ -3,9 +3,9 @@ using UnityEngine.Audio;
 
 public abstract class MixerGroupBase : MonoBehaviour
 {
-    [SerializeField] protected AudioMixer _audioMixer;
-    [SerializeField] protected string _groupName;
+    [SerializeField] protected AudioMixerGroup MixerGroup;
+    [SerializeField] protected string ExposedParameterName;
 
-    protected float _min = -80f;
-    protected float _max = 0f;
+    protected float MinDecibel = -80f;
+    protected float MaxDecibel = 0f;
 }

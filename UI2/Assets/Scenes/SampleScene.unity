@@ -1924,8 +1924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783aaf6f72219384e8827475ee752aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 24100000, guid: a42086628b880834ca0a350337afeeca, type: 2}
-  _groupName: UI
+  MixerGroup: {fileID: 0}
+  GroupName: 
 --- !u!1 &958728620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,8 +2465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783aaf6f72219384e8827475ee752aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 24100000, guid: a42086628b880834ca0a350337afeeca, type: 2}
-  _groupName: Background
+  MixerGroup: {fileID: 0}
+  GroupName: 
 --- !u!1 &1131923764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,8 +2908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783aaf6f72219384e8827475ee752aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 24100000, guid: a42086628b880834ca0a350337afeeca, type: 2}
-  _groupName: Master
+  MixerGroup: {fileID: 0}
+  GroupName: 
 --- !u!1 &1569639664
 GameObject:
   m_ObjectHideFlags: 0
@@ -3501,8 +3501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc7a8b6a1b1c264e8f0ef72941e15a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 24100000, guid: a42086628b880834ca0a350337afeeca, type: 2}
-  _groupName: Master
+  MixerGroup: {fileID: 24300002, guid: a42086628b880834ca0a350337afeeca, type: 2}
+  GroupName: 
 --- !u!1 &2038398082
 GameObject:
   m_ObjectHideFlags: 0
