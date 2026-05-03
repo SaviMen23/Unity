@@ -1924,8 +1924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783aaf6f72219384e8827475ee752aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MixerGroup: {fileID: 0}
-  GroupName: 
+  MixerGroup: {fileID: 2829408699402341597, guid: a42086628b880834ca0a350337afeeca, type: 2}
+  ExposedParameterName: UI
+  _slider: {fileID: 898048091}
 --- !u!1 &958728620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,8 +2466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783aaf6f72219384e8827475ee752aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MixerGroup: {fileID: 0}
-  GroupName: 
+  MixerGroup: {fileID: 8331609014814308088, guid: a42086628b880834ca0a350337afeeca, type: 2}
+  ExposedParameterName: Background
+  _slider: {fileID: 1075984274}
 --- !u!1 &1131923764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,8 +2910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783aaf6f72219384e8827475ee752aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MixerGroup: {fileID: 0}
-  GroupName: 
+  MixerGroup: {fileID: 24300002, guid: a42086628b880834ca0a350337afeeca, type: 2}
+  ExposedParameterName: Master
+  _slider: {fileID: 1527991535}
 --- !u!1 &1569639664
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,19 +3478,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1976976731}
-        m_TargetAssemblyTypeName: volumeSwitch, Assembly-CSharp
-        m_MethodName: Mute
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!114 &1976976731
 MonoBehaviour:
@@ -3502,7 +3493,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MixerGroup: {fileID: 24300002, guid: a42086628b880834ca0a350337afeeca, type: 2}
-  GroupName: 
+  ExposedParameterName: Master
+  _toggle: {fileID: 1976976730}
 --- !u!1 &2038398082
 GameObject:
   m_ObjectHideFlags: 0
