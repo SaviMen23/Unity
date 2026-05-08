@@ -5,7 +5,7 @@ public class Wallet : MonoBehaviour
 {
     public event Action<int> WalletChanged;
 
-    private int _wallet = 0;
+    private int _current = 0;
 
-    public void TakeCoin() => WalletChanged.Invoke(++_wallet);
+    public void TakeCoin() => WalletChanged.Invoke(++_current);
 }

@@ -18,7 +18,7 @@ public class HealthBarSmooth : MonoBehaviour
 
     private void Start()
     {
-        _slider.maxValue = _characterHealth.MaxHealth;
+        _slider.maxValue = _characterHealth.Max;
         _slider.value = _slider.maxValue;
     }
 
