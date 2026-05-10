@@ -6,7 +6,7 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private float _speed;
 
     private Transform _target;
-    private bool canMove = false;
+    private bool _canMove = false;
 
     private void OnEnable()
     {
@@ -20,14 +20,14 @@ public class EnemyFollow : MonoBehaviour
 
     public void Renew()
     {
-        if (canMove)
+        if (_canMove)
             Move();
     }
 
     private void SetMoveState(Transform target)
     {
         _target = target;
-        canMove = true;
+        _canMove = true;
     }
 
     private void Move()

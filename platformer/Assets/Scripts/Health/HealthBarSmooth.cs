@@ -32,16 +32,16 @@ public class HealthBarSmooth : MonoBehaviour
         _characterHealth.HealthChanged -= ChangeBar;
     }
 
-    private void ChangeBar(int currentHeanthPoints)
+    private void ChangeBar(int currentHealthPoints)
     {
-        StartCoroutine(MoveHealthBarWithDelay(currentHeanthPoints));
+        StartCoroutine(MoveHealthBarWithDelay(currentHealthPoints));
     }
 
     private IEnumerator MoveHealthBarWithDelay(int currentHealthPoints)
     {
         while(_slider.value != currentHealthPoints)
         {
-            _slider.value = Mathf.Lerp(_slider.value, currentHealthPoints, _delta);
+            _slider.value = Mathf.MoveTowards(_slider.value, currentHealthPoints, _delta);
             yield return _delayForCoroutine;
         }
     }
