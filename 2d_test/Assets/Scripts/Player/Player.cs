@@ -8,10 +8,10 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (_inputReader != null)
-            _inputReader.Renew();
+            _inputReader.Read();
 
         if (_inputReader != null)
-            _bounce.Renew();
+            _bounce.UpdateStateIsGrounded();
     }
 }
 

@@ -14,10 +14,10 @@ public class StealHealthBinder : MonoBehaviour
 
     private void Update()
     {
-        if (_pusherKey.Renew())
+        if (_pusherKey.GetState())
             _stealerHealth.Work();
 
-        _stealerHealthView.Renew();
+        _stealerHealthView.UpdateView();
     }
 }
 

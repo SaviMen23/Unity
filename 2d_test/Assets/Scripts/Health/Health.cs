@@ -7,8 +7,10 @@ public class Health : MonoBehaviour
 
     public event Action<int> HealthChanged;
 
+    private int _positiveSign = 1;
+    private int _negativeSign = -1;
     private int _current;
-
+    private int _min = 0;
 
     private void Awake()
     {
@@ -17,27 +19,24 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (_current - damage > 0)
-            _current -= damage;
-        else
-        {
-            _current = 0;
-            Die();
-        }
-
-        HealthChanged?.Invoke(_current);
+        ChangeHealth(damage, _negativeSign);
     }
-
+    
     public void Heal(int healthByHeal)
     {
-        if (_current + healthByHeal <= Max)
-            _current += healthByHeal;
-        else
-            _current = Max;
+        ChangeHealth(healthByHeal, _positiveSign);
+    }
+
+    private void ChangeHealth(int delta, int sign)
+    {
+        _current += Math.Clamp(delta, _min, Max) * sign;
+
+        if (_current <= _min)
+            Die();
 
         HealthChanged?.Invoke(_current);
     }
-
+    
     private void Die()
     {
         gameObject.SetActive(false);

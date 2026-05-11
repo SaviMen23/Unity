@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class EnemyFollow : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
     [SerializeField] private Detect _detect;
     [SerializeField] private float _speed;
 
     private Transform _target;
-    private bool _canMove = false;
 
     private void OnEnable()
     {
@@ -17,21 +16,15 @@ public class EnemyFollow : MonoBehaviour
     {
         _detect.EnemySet -= SetMoveState;
     }
-
-    public void Renew()
-    {
-        if (_canMove)
-            Move();
-    }
-
+    
     private void SetMoveState(Transform target)
     {
         _target = target;
-        _canMove = true;
     }
 
-    private void Move()
+    public void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+        if (_target != null)
+            transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
     }
 }

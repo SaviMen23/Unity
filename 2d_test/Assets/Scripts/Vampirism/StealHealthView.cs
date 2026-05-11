@@ -13,6 +13,8 @@ public class StealHealthView : MonoBehaviour
     private bool _canChangeBar = false;
     private int _currentSign = 0;
 
+    private float _currentTime;
+
     private void OnEnable()
     {
         _stealerHealth.AbilityWork += DoDuration;
@@ -25,23 +27,21 @@ public class StealHealthView : MonoBehaviour
 
     public void Initialize()
     {
-        _bar.maxValue = _stealerHealth.AbilityDurationTime;
-        _bar.value = _stealerHealth.AbilityDurationTime;
         _fillImage.color = _durationColor;
+        _currentTime = _stealerHealth.AbilityDurationTime;
     }
 
     public void DoDuration()
     {
-        _bar.maxValue = _stealerHealth.AbilityDurationTime;
-        _bar.value = _stealerHealth.AbilityDurationTime;
         _currentSign = -1;
         _canChangeBar = true;
+        _currentTime = _stealerHealth.AbilityDurationTime;
     }
 
-    public void Renew()
+    public void UpdateView()
     {
         if (_canChangeBar)
-            _bar.value += Time.deltaTime * Math.Sign(_currentSign);
+            _bar.value += Time.deltaTime / _currentTime * Math.Sign(_currentSign);
 
         if (_bar.value == _bar.maxValue)
         {
@@ -58,9 +58,9 @@ public class StealHealthView : MonoBehaviour
 
     private void DoReload()
     {
-        _bar.maxValue = _stealerHealth.AbilityReloadTime;
         _currentSign = 1;
         _canChangeBar = true;
+        _currentTime = _stealerHealth.AbilityReloadTime;
     }
 }
 

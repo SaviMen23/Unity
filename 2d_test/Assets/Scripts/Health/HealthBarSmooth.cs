@@ -1,20 +1,12 @@
-using UnityEngine.UI;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBarSmooth : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private Health _characterHealth;
-    [SerializeField, Min(0)] private float _delta;
-    [SerializeField, Min(0)] private float _delay;
-
-    private WaitForSecondsRealtime _delayForCoroutine;
-
-    private void Awake()
-    {
-        _delayForCoroutine = new WaitForSecondsRealtime(_delay);
-    }
+    [SerializeField] private float _duration;
 
     private void Start()
     {
@@ -39,10 +31,18 @@ public class HealthBarSmooth : MonoBehaviour
 
     private IEnumerator MoveHealthBarWithDelay(int currentHealthPoints)
     {
-        while(_slider.value != currentHealthPoints)
+        float startValue = _slider.value;
+        float timer = 0f;
+
+        while (timer < _duration)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, currentHealthPoints, _delta);
-            yield return _delayForCoroutine;
+            timer += Time.deltaTime;
+            float normalizedTime = timer / _duration;
+            _slider.value = Mathf.Lerp(startValue, currentHealthPoints, normalizedTime);
+
+            yield return null;
         }
+
+        _slider.value = currentHealthPoints;
     }
 }

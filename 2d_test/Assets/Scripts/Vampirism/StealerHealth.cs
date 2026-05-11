@@ -66,7 +66,7 @@ public class StealerHealth : MonoBehaviour
 
         foreach (Collider2D enemy in enemies)
         {
-            float distance = (enemy.transform.position - transform.position).magnitude;
+            float distance = (enemy.transform.position - transform.position).sqrMagnitude;
 
             if (distance < distanceToClosestEnemy)
             {

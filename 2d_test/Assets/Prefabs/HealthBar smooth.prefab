@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 8127045836265671602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8127045837309827695}
@@ -105,8 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 8127045836265671600}
   _characterHealth: {fileID: 0}
-  _delta: 3
-  _delay: 0.05
+  _duration: 0.8
 --- !u!1 &8127045837185794635
 GameObject:
   m_ObjectHideFlags: 0

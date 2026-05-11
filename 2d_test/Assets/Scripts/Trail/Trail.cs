@@ -11,12 +11,12 @@ public class Trail : MonoBehaviour
 
     private void OnEnable()
     {
-        _follower.TargetSet += SetFollowerTarget;
+        _follower.FollowerCame += SetFollowerTarget;
     }
 
     private void OnDisable()
     {
-        _follower.TargetSet -= SetFollowerTarget;
+        _follower.FollowerCame -= SetFollowerTarget;
     }
 
     private void SetFollowerTarget()

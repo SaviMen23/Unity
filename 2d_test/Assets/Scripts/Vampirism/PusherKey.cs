@@ -4,7 +4,7 @@ public class PusherKey : MonoBehaviour
 {
     [SerializeField] private KeyCode _key;
 
-    public bool Renew()
+    public bool GetState()
     {
         return Input.GetKeyDown(_key);
     }

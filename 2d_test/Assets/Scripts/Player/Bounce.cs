@@ -19,7 +19,7 @@ public class Bounce : MonoBehaviour
             _parentRigidbody = transform.parent.GetComponent<Rigidbody2D>();
     }
 
-    public void Renew()
+    public void UpdateStateIsGrounded()
     {
         bool target = _isGrounded;
         _isGrounded = Physics2D.OverlapCircle(transform.position, _overlapRadius, _layerMask);

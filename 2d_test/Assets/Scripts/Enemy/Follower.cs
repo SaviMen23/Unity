@@ -1,34 +1,29 @@
-using System;
+    using System;
 using UnityEngine;
 
 public class Follower : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    public event Action TargetSet;
-
-    public bool CanFollow { private get; set; } = true;
-
     private Transform _target;
+    
+    public event Action FollowerCame;
 
     private void Start()
     {
-        TargetSet?.Invoke();
+        FollowerCame?.Invoke();
     }
 
-    public void Renew()
+    public void SetTarget(Transform target) 
     {
-        if (CanFollow)
-            Move();
+        _target = target; 
     }
 
-    public void SetTarget(Transform target) => _target = target;
-
-    private void Move()
+    public void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
 
         if (transform.position == _target.position)
-            TargetSet?.Invoke();
+            FollowerCame?.Invoke();
     }
 }

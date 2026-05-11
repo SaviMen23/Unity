@@ -9,9 +9,7 @@ public class StealZone : MonoBehaviour
 
     public Collider2D[] GetEnemies()
     {
-        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, Radius, _enemyMask);
-
-        return enemyColliders;
+        return Physics2D.OverlapCircleAll(transform.position, Radius, _enemyMask);
     }
 
     private void OnDrawGizmos()
