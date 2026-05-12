@@ -29,8 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5320117817924402057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD:project/Assets/Prefab/Cube.prefab
   m_LocalPosition: {x: -14.144308, y: -5.690716, z: 11.625702}
   m_LocalScale: {x: 2, y: 2, z: 2}
+=======
+  m_LocalPosition: {x: -7.614586, y: 10.643413, z: 1.1555078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> parent of f20270c2 (cubesRain 2):project/Assets/Prefabs/Cube.prefab
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
