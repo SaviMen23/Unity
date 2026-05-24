@@ -9,6 +9,7 @@ public class BombsPool : Pool<Bomb>
 
         Bomb bomb = _queue.Dequeue();
         bomb.gameObject.SetActive(true);
+        ChangeCounterActiveObjects();
 
         return bomb;
     }
@@ -24,6 +25,7 @@ public class BombsPool : Pool<Bomb>
         poolObject.transform.rotation = Quaternion.identity;
         poolObject.gameObject.SetActive(false);
         _queue.Enqueue(poolObject);
+        base.Return(poolObject);
     }
 
     protected override void ExpandPool()
@@ -31,5 +33,6 @@ public class BombsPool : Pool<Bomb>
         Bomb bomb = Instantiate(_prefab);
         bomb.gameObject.SetActive(false);
         _queue.Enqueue(bomb);
+        base.ExpandPool();
     }
 }

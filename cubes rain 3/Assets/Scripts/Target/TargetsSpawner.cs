@@ -9,7 +9,7 @@ public class TargetsSpawner : Spawner<Target>
 
     private Collider _collider;
 
-    public event Action<Vector3> TargetRespawn;
+    public event Action<Vector3> TargetRespawn; 
 
     private void Awake()
     {
@@ -33,6 +33,8 @@ public class TargetsSpawner : Spawner<Target>
         Target target = _pool.Get();
         target.TargetPooled += Respawn;
         target.transform.position = position;
+
+        base.Spawn();
     }
 
     protected override void Respawn(Target target)

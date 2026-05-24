@@ -28,6 +28,7 @@ public class BombsSpawner : Spawner<Bomb>
         bomb.BombPooled += Respawn;
         bomb.transform.position = _spawnPosition;
         bomb.Work();
+        base.Spawn();
     }
 
     protected override void Respawn(Bomb bomb)

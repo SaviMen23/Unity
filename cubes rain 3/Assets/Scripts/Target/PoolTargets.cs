@@ -17,6 +17,7 @@ public class PoolTargets : Pool<Target>
 
         Target target = _queue.Dequeue();
         target.gameObject.SetActive(true);
+        ChangeCounterActiveObjects();
 
         return target;
     }
@@ -33,6 +34,7 @@ public class PoolTargets : Pool<Target>
         target.Clear(_prefabColor);
         target.gameObject.SetActive(false);
         _queue.Enqueue(target);
+        base.Return(target);    
     }
 
     protected override void ExpandPool()
@@ -40,5 +42,6 @@ public class PoolTargets : Pool<Target>
         Target target = Instantiate(_prefab);
         target.gameObject.SetActive(false);
         _queue.Enqueue(target);
+        base.ExpandPool();
     }
 }
