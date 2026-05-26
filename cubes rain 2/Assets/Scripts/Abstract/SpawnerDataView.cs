@@ -10,11 +10,6 @@ public abstract class SpawnerDataView<T> : MonoBehaviour where T : Component
     protected int _numberOfSpawnedObjects = 0;
     protected int _numberOfActiveObjects = 0;
     protected int _numberOfCreateObjects = 0;
-    
-    protected void Update()
-    {
-        Show();
-    }
 
     protected void OnEnable()
     {
@@ -33,16 +28,19 @@ public abstract class SpawnerDataView<T> : MonoBehaviour where T : Component
     protected void ChangeNumberOfSpawned(int numberOfSpawned)
     {
         _numberOfSpawnedObjects = numberOfSpawned;
+        Show();
     }
 
     protected void ChangeNumberOfActive(int numberOfActive)
     {
         _numberOfActiveObjects = numberOfActive;
+        Show();
     }
 
     protected void ChangeNumberOfCreated(int created)
     {
         _numberOfCreateObjects = created;
+        Show();
     }
 
     protected void Show()

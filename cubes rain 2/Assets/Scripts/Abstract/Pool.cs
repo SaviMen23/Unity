@@ -47,6 +47,11 @@ public abstract class Pool<T> : MonoBehaviour where T : Component
     {
         NumberOfActiveChange?.Invoke(_capacity - _queue.Count);
     }
+
+    protected void OnGet()
+    {
+
+    }
 }
 
 

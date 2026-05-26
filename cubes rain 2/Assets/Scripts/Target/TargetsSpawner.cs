@@ -22,7 +22,7 @@ public class TargetsSpawner : Spawner<Target>
             Spawn();
     }
 
-    protected override void Spawn()
+    protected override Target Spawn()
     {
         float colliderBoundsX = _collider.bounds.size.x / 2;
         float colliderBoundsY = _collider.bounds.size.y / 2;
@@ -33,8 +33,9 @@ public class TargetsSpawner : Spawner<Target>
         Target target = _pool.Get();
         target.TargetPooled += Respawn;
         target.transform.position = position;
+        CountSpawnedObject();
 
-        base.Spawn();
+        return target;
     }
 
     protected override void Respawn(Target target)

@@ -18,17 +18,18 @@ public class BombsSpawner : Spawner<Bomb>
 
     private void SpawnInPlace(Vector3 position)
     {
-        _spawnPosition = position;
-        Spawn();
+        Spawn().transform.position = position;
     }
 
-    protected override void Spawn()
+    protected override Bomb Spawn()
     {
         Bomb bomb = _pool.Get();
         bomb.BombPooled += Respawn;
         bomb.transform.position = _spawnPosition;
         bomb.Work();
-        base.Spawn();
+        CountSpawnedObject();
+
+        return bomb;
     }
 
     protected override void Respawn(Bomb bomb)
